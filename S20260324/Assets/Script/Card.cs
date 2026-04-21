@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,12 +16,28 @@ public class Card : MonoBehaviour
     private Quaternion originRotation = Quaternion.Euler(0, 0, 0);
     public CardGame cardGame;
     public bool isMatched = false;
+    public Object CardBack_obj;
+    private SpriteRenderer CardBack;
+    
+
+    public bool isImageOnly = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+       CardBack = CardBack_obj.GetComponent<SpriteRenderer>();
+
+       TextMeshProUGUI Text_con = GetComponentInChildren<TextMeshProUGUI>();
+
+        if (isImageOnly)
+        {
+            Text_con.enabled = false;
+        }
+        else
+        {
+            Text_con.enabled = true;
+        }
     }
 
     // Update is called once per frame
@@ -30,10 +47,15 @@ public class Card : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, originRotation, rotationSpeed * Time.deltaTime);
 
+            CardBack.enabled = false;
+
         }
         else
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, flipRotation, rotationSpeed * Time.deltaTime);
+
+            CardBack.enabled = true;
+
         }
 
 
