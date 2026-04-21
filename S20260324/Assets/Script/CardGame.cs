@@ -10,11 +10,15 @@ public class CardGame : MonoBehaviour
     private Card secondCard = null;
     private bool isChecking = false;
 
+    public GameObject Card_ref;
+    
+
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         StartGame();
        
 
@@ -148,7 +152,7 @@ public class CardGame : MonoBehaviour
     }
 
 
-
+    
 
 
 }
