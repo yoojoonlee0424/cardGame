@@ -14,11 +14,13 @@ public class Card : MonoBehaviour
     public bool isFront = true;
     private Quaternion flipRotation = Quaternion.Euler(0, 180f, 0);
     private Quaternion originRotation = Quaternion.Euler(0, 0, 0);
-    public CardGame cardGame;
+
     public bool isMatched = false;
     public Object CardBack_obj;
     private SpriteRenderer CardBack;
-    
+
+    private CardGame manager;
+
 
     public bool isImageOnly = false;
 
@@ -28,9 +30,11 @@ public class Card : MonoBehaviour
     {
        CardBack = CardBack_obj.GetComponent<SpriteRenderer>();
 
+       manager = FindAnyObjectByType<CardGame>();
+
        TextMeshProUGUI Text_con = GetComponentInChildren<TextMeshProUGUI>();
 
-        if (isImageOnly)
+        if (isImageOnly && cardNumber < 10)
         {
             Text_con.enabled = false;
         }
@@ -66,12 +70,12 @@ public class Card : MonoBehaviour
     {
 
 
-        if (!isMatched)
+        if (isMatched || isFront)
         {
-            cardGame.OnClickCard(this);
+            return;
             
         }
-
+        manager.OnClickCard(this);
 
     }
 
@@ -89,9 +93,9 @@ public class Card : MonoBehaviour
     {
         text = GetComponentInChildren<TextMeshProUGUI>();
 
-        this.cardNumber = New_cardNumber;
-
         text.text = New_cardNumber.ToString();
+
+        cardNumber = New_cardNumber;
     }
 
     public void ChangeColor(Color newColor)

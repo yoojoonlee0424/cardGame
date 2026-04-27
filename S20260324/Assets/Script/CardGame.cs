@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class CardGame : MonoBehaviour
 {
-    public List<Sprite> Sprites = new List<Sprite>();
-    public List<Card> cards = new List<Card>();
+    public List<Sprite> Sprites = new();
+    public List<Card> cards;
+
+    public int cardCount = 4;
+
+    public GameObject Card_ref;
+    public Transform Container;
+
     private Card firstCard = null;
     private Card secondCard = null;
     private bool isChecking = false;
-
-    public GameObject Card_ref;
-    
-
-    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,19 +30,24 @@ public class CardGame : MonoBehaviour
     //카드 썩고 뒤집기
     void StartGame()
     {
-        List<int> pairNumbers = GenPairNum(cards.Count);
+        List<int> pairNumbers = GenPairNum();
 
-        for (int i = 0; i < pairNumbers.Count; i++)
+        for (int i = 0; i < cardCount*2; i++)
         {
+            GameObject EX = Instantiate(Card_ref, Container);
+
+            cards.Add(EX.GetComponent<Card>());
+
             cards[i].SetCard(pairNumbers[i]);
+            if(Sprites.Count > pairNumbers[i])
+            {
+                cards[i].Setimage(Sprites[pairNumbers[i]]);
+            }
+            
 
-            cards[i].Setimage(Sprites[pairNumbers[i]]);
-        }
-
-        for (int i = 0; i < pairNumbers.Count; i++)
-        {
             cards[i].isFront = false;
         }
+
     }
 
 
@@ -125,23 +131,23 @@ public class CardGame : MonoBehaviour
     }
 
     //페어 생성
-    List<int> GenPairNum(int cardCount)
+    List<int> GenPairNum()
     {
      
-        int pairCount = cardCount / 2;
-        List<int> newCardNumbers = new List<int>();
+        int pairCount = this.cardCount;
+        List<int> newCardNumbers = new();
         
-        for(int i = 0;i < pairCount;i++)
+        for(int i = 0; i < pairCount; i++)
         {
             newCardNumbers.Add(i);
             newCardNumbers.Add(i);
         }
 
-        for (int i = newCardNumbers.Count - 1; i > 0; i--)
+        for (int i = 0; i < this.cardCount * 2; i++)
         {
-            int rnd = Random.Range(0, i + 1);
-
             int temp = newCardNumbers[i];
+
+            int rnd = Random.Range(0, this.cardCount * 2 - 1);
 
             newCardNumbers[i] = newCardNumbers[rnd];
             newCardNumbers[rnd] = temp;
