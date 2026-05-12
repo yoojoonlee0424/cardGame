@@ -21,7 +21,7 @@ public class CardGame : MonoBehaviour
     {
         
         StartGame();
-       
+        SoundManager.Instance.PlayBGM();
 
 
     }
@@ -91,11 +91,13 @@ public class CardGame : MonoBehaviour
         {
             firstCard = card;
             firstCard.Flip(true);
+            SoundManager.Instance.PlaySound();
         }
         else
         {
             secondCard = card;
             secondCard.Flip(true);
+            SoundManager.Instance.PlaySound();
         }
         
 
