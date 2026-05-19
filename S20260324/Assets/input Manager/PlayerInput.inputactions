@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "PlayerInput",
+    "maps": [
+        {
+            "name": "KeyMap",
+            "id": "530c7a94-bd67-45a0-a5f6-9410ff26782d",
+            "actions": [
+                {
+                    "name": "ESC",
+                    "type": "Button",
+                    "id": "5b1f7319-d465-4f22-8cba-b2330b8a05cb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2c5572dd-b309-4d24-b830-006653988450",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ESC",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

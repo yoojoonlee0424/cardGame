@@ -44,4 +44,40 @@ public class SoundManager : MonoBehaviour
 
         audioSourceBGM.Play();
     }
+
+
+
+
+    public void OnOffBGM(bool isOn)
+    {
+        if (isOn)
+        {
+            audioSourceBGM.volume = 1f;
+        }
+        else
+        {
+            audioSourceBGM.volume = 0f;
+        }
+    }
+
+    public void OnOffFX(bool isOn)
+    {
+        if (isOn)
+        {
+            audioSourceFX.volume = 1f;
+        }
+        else
+        {
+            audioSourceFX.volume = 0f;
+        }
+    }
+    public void SetBGMVolume(float volume)
+    {
+        audioSourceBGM.volume = volume;
+    }
+
+    public void SetFXVolume(float volume)
+    {
+        audioSourceFX.volume = volume;
+    }
 }

@@ -16,6 +16,10 @@ public class CardGame : MonoBehaviour
     private Card secondCard = null;
     private bool isChecking = false;
 
+    public GameObject Grid;
+
+    public bool isCardBackOff = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,9 +30,22 @@ public class CardGame : MonoBehaviour
 
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        if(isCardBackOff)
+        {
+            Grid.SetActive(false);
+        }
+        else
+        {
+            Grid.SetActive(true);
+        }
+    }
+
 
     //카드 썩고 뒤집기
-    void StartGame()
+    public void StartGame()
     {
         List<int> pairNumbers = GenPairNum();
 
@@ -126,11 +143,7 @@ public class CardGame : MonoBehaviour
 
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 
     //페어 생성
     List<int> GenPairNum()

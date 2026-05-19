@@ -24,6 +24,8 @@ public class Card : MonoBehaviour
 
     public bool isImageOnly = false;
 
+    
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,6 +44,10 @@ public class Card : MonoBehaviour
         {
             Text_con.enabled = true;
         }
+
+
+        
+
     }
 
     // Update is called once per frame
@@ -61,6 +67,7 @@ public class Card : MonoBehaviour
             CardBack.enabled = true;
 
         }
+
 
 
     }
