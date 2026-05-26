@@ -29,6 +29,8 @@ public class UiManager : MonoBehaviour
     public Button restartButton;
 
     public Slider test_setCount;
+    public TextMeshProUGUI test_Count;
+
 
     public InputField InputCount;
 
@@ -63,6 +65,8 @@ public class UiManager : MonoBehaviour
         restartButton.onClick.AddListener(Restart);
 
         test_setCount.onValueChanged.AddListener(SetCardNumber_float);
+
+
 
         
     }
@@ -165,6 +169,12 @@ public class UiManager : MonoBehaviour
         SoundManager.Instance.SetFXVolume(volue);
     }
 
+
+
+    private void FixedUpdate()
+    {
+        test_Count.text = cardGame.cardCount.ToString();
+    }
 
 
 }

@@ -5,7 +5,7 @@ public class GameOver : MonoBehaviour
 
     public Card Cards;
     
-    public bool isGameover = true;
+    public bool isGameover = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
